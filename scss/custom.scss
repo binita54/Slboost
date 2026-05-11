@@ -1,0 +1,1686 @@
+// =================================================================
+// PROFESSIONAL MOODLE CUSTOM SCSS - ENHANCED EDITION
+// Modern, Clean, Enterprise Ready with Improved UX/UI
+// =================================================================
+
+// -------------------- 1. COLOR PALETTE (Enterprise Standard + Modern Tones) -----
+$primary-accent: #2c3e66;           // Deep Navy (Primary Buttons/Headers)
+$primary-light: #3d5278;             // Lighter navy for hover states
+$secondary-accent: #5c7a9e;          // Soft Blue (Secondary elements)
+$success-color: #2a7f4b;             // Professional Green
+$success-light: #e6f4ea;             // Light green bg for alerts
+$warning-color: #d98f2b;             // Alert Orange
+$warning-light: #fef4e6;             // Light orange bg
+$danger-color: #bc4e4e;              // Muted Red
+$danger-light: #fdf0f0;              // Light red bg
+$info-color: #3b82f6;                // Info blue
+$gray-bg: #f8f9fc;                   // Background Gray
+$gray-light: #f1f3f5;                // Light gray for dividers
+$card-border: #e9ecef;               // Subtle Borders
+$text-dark: #1e293b;                 // Primary Text (darker for readability)
+$text-muted: #64748b;                // Muted text
+$shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+$transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-smooth: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+
+// -------------------- 2. GLOBAL STYLES (Improved Readability) -----
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: $gray-bg;
+    color: $text-dark;
+    line-height: 1.5;
+    font-size: 0.9375rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Modern headings with better hierarchy
+h1, .h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: $primary-accent;
+}
+
+h2, .h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: $primary-accent;
+}
+
+h3, .h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $text-dark;
+}
+
+// Links with better interaction
+a:not(.btn) {
+    color: $primary-accent;
+    text-decoration: none;
+    transition: $transition-base;
+    
+    &:hover {
+        color: $primary-light;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+}
+
+// -------------------- 3. NAVIGATION (Top & Drawer) Enhanced -----
+// Primary navbar with glass-morphism effect
+.navbar.bg-primary {
+    background: linear-gradient(135deg, $primary-accent 0%, $primary-light 100%) !important;
+    box-shadow: $shadow-lg;
+    border-bottom: none;
+    padding: 0.75rem 1rem;
+    
+    .nav-link, .navbar-brand {
+        color: rgba(255, 255, 255, 0.92) !important;
+        font-weight: 500;
+        transition: $transition-base;
+        position: relative;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: $transition-base;
+            transform: translateX(-50%);
+        }
+        
+        &:hover {
+            color: white !important;
+            
+            &::after {
+                width: 80%;
+            }
+        }
+    }
+    
+    .dropdown-menu {
+        border-radius: 0.75rem;
+        box-shadow: $shadow-lg;
+        border: 1px solid $card-border;
+        margin-top: 0.5rem;
+    }
+}
+
+// Secondary course navigation - improved drawer
+.drawer {
+    border-right: 1px solid $card-border;
+    background: white;
+    box-shadow: $shadow-sm;
+    
+    .list-group-item {
+        border: none;
+        border-radius: 0.5rem;
+        margin-bottom: 0.25rem;
+        transition: $transition-base;
+        
+        &:hover {
+            background-color: $gray-bg;
+            transform: translateX(4px);
+        }
+        
+        &.active {
+            background: linear-gradient(135deg, rgba($primary-accent, 0.08), rgba($primary-light, 0.04));
+            color: $primary-accent;
+            font-weight: 600;
+            border-left: 3px solid $primary-accent;
+            
+            &::before {
+                content: '•';
+                margin-right: 8px;
+                font-size: 1.2rem;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+// -------------------- 4. CARDS & CONTAINERS (Premium Feel) -----
+.card {
+    background: white;
+    border: 1px solid $card-border;
+    border-radius: 1rem;
+    box-shadow: $shadow-sm;
+    transition: $transition-smooth;
+    overflow: hidden;
+    
+    &:hover {
+        box-shadow: $shadow-lg;
+        transform: translateY(-2px);
+        border-color: transparent;
+    }
+    
+    .card-header {
+        background: rgba($gray-bg, 0.5);
+        border-bottom: 1px solid $card-border;
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        font-size: 1rem;
+        
+        &:first-child {
+            border-radius: 1rem 1rem 0 0;
+        }
+    }
+    
+    .card-footer {
+        background: white;
+        border-top: 1px solid $card-border;
+        padding: 0.875rem 1.25rem;
+    }
+}
+
+// Dashboard course cards with better visual hierarchy
+.coursebox {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    transition: $transition-smooth;
+    border: 1px solid $card-border;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: $primary-accent;
+        opacity: 0;
+        transition: $transition-base;
+    }
+    
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: $shadow-lg;
+        border-color: transparent;
+        
+        &::before {
+            opacity: 1;
+        }
+    }
+    
+    .coursename a {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+}
+
+// -------------------- 5. BUTTONS (Professional Variants with Micro-interactions) -----
+.btn {
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    transition: $transition-base;
+    position: relative;
+    overflow: hidden;
+    
+    &:active {
+        transform: scale(0.96);
+    }
+    
+    // Ripple effect simulation
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s;
+    }
+    
+    &:active::after {
+        width: 200%;
+        height: 200%;
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, $primary-accent, $primary-light);
+    border: none;
+    box-shadow: $shadow-sm;
+    
+    &:hover {
+        background: linear-gradient(135deg, $primary-light, $primary-accent);
+        transform: translateY(-1px);
+        box-shadow: $shadow-md;
+    }
+}
+
+.btn-outline-primary {
+    border: 1.5px solid $primary-accent;
+    color: $primary-accent;
+    background: transparent;
+    
+    &:hover {
+        background: $primary-accent;
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: $shadow-sm;
+    }
+}
+
+.btn-secondary {
+    background: $secondary-accent;
+    border: none;
+    border-radius: 0.75rem;
+    
+    &:hover {
+        background: darken($secondary-accent, 8%);
+        transform: translateY(-1px);
+    }
+}
+
+.btn-sm {
+    padding: 0.35rem 1rem;
+    border-radius: 1.5rem;
+}
+
+.btn-lg {
+    padding: 0.75rem 2rem;
+    border-radius: 2.5rem;
+}
+
+// -------------------- 6. FORMS (Clean & Accessible with Better Focus) -----
+.form-control, .form-select {
+    border-radius: 0.75rem;
+    border: 1px solid $card-border;
+    padding: 0.625rem 1rem;
+    transition: $transition-base;
+    background-color: white;
+    
+    &:focus {
+        border-color: $primary-accent;
+        box-shadow: 0 0 0 4px rgba($primary-accent, 0.12);
+        outline: none;
+    }
+    
+    &:hover:not(:focus):not(:disabled) {
+        border-color: $primary-light;
+    }
+}
+
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.375rem;
+    color: $text-dark;
+}
+
+.input-group {
+    .form-control {
+        border-radius: 0.75rem 0 0 0.75rem;
+    }
+    
+    .btn {
+        border-radius: 0 0.75rem 0.75rem 0;
+    }
+}
+
+// Checkbox & Radio styling
+.form-check-input {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.15rem;
+    border: 1.5px solid $card-border;
+    transition: $transition-base;
+    
+    &:checked {
+        background-color: $primary-accent;
+        border-color: $primary-accent;
+    }
+    
+    &:focus {
+        box-shadow: 0 0 0 3px rgba($primary-accent, 0.15);
+        border-color: $primary-accent;
+    }
+}
+
+// -------------------- 7. ACTIVITY & RESOURCE ICONS (Better Layout) -----
+.activityinstance {
+    padding: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    > a {
+        font-weight: 500;
+        color: $text-dark;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        
+        &:hover {
+            color: $primary-accent;
+            
+            &::before {
+                transform: translateX(2px);
+            }
+        }
+    }
+    
+    // Style for activity icons
+    .icon {
+        width: 20px;
+        height: 20px;
+        opacity: 0.7;
+        transition: $transition-base;
+    }
+    
+    &:hover .icon {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+// Activity completion badges - improved
+.badge-success, .completioninfo {
+    background: $success-color !important;
+    color: white;
+    font-weight: 500;
+    padding: 0.25rem 0.875rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    
+    &::before {
+        content: '✓';
+        font-weight: bold;
+    }
+}
+
+// Completion tracking - visual progress
+.progress {
+    height: 0.5rem;
+    border-radius: 1rem;
+    background-color: $gray-light;
+    
+    .progress-bar {
+        background: linear-gradient(90deg, $primary-accent, $primary-light);
+        border-radius: 1rem;
+    }
+}
+
+// -------------------- 8. COURSE SECTIONS (Clean & Spacious Layout) -----
+.section {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid $card-border;
+    transition: $transition-base;
+    
+    &:hover {
+        box-shadow: $shadow-sm;
+    }
+    
+    .sectionname {
+        font-size: 1.25rem;
+        font-weight: 600;
+        border-left: 4px solid $primary-accent;
+        padding-left: 1rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    
+    .summary {
+        color: $text-muted;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+}
+
+// Course index / table of contents
+.course-content .section .activity {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid $gray-light;
+    
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+// -------------------- 9. FOOTER (Clean & Modern) -----
+#page-footer {
+    margin-top: 3rem;
+    padding: 2rem 0;
+    background: white;
+    border-top: 1px solid $card-border;
+    color: $text-muted;
+    font-size: 0.8125rem;
+    
+    a {
+        color: $primary-accent;
+        
+        &:hover {
+            color: $primary-light;
+        }
+    }
+}
+
+// -------------------- 10. ALERTS (Subtle, Modern, Icon-friendly) -----
+.alert {
+    border: none;
+    border-radius: 0.875rem;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    
+    &::before {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui;
+        font-weight: 600;
+    }
+    
+    &.alert-info {
+        background-color: rgba($primary-accent, 0.06);
+        color: $primary-accent;
+        border-left: 3px solid $primary-accent;
+    }
+    
+    &.alert-success {
+        background-color: $success-light;
+        color: $success-color;
+        border-left: 3px solid $success-color;
+    }
+    
+    &.alert-warning {
+        background-color: $warning-light;
+        color: darken($warning-color, 10%);
+        border-left: 3px solid $warning-color;
+    }
+    
+    &.alert-danger {
+        background-color: $danger-light;
+        color: $danger-color;
+        border-left: 3px solid $danger-color;
+    }
+}
+
+// -------------------- 11. USER MENU & DROPDOWNS (Enhanced) -----
+.user-menu {
+    .dropdown-menu {
+        border-radius: 0.75rem;
+        box-shadow: $shadow-lg;
+        border: 1px solid $card-border;
+        min-width: 220px;
+        padding: 0.5rem;
+        
+        .dropdown-item {
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            transition: $transition-base;
+            
+            &:hover {
+                background-color: $gray-bg;
+                transform: translateX(4px);
+            }
+            
+            &:active {
+                background-color: $primary-accent;
+                color: white;
+            }
+        }
+    }
+}
+
+// Avatar styling
+.userpicture {
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: $shadow-sm;
+    transition: $transition-base;
+    
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: $shadow-md;
+    }
+}
+
+// -------------------- 12. BREADCRUMBS (Clean hierarchy) -----
+.breadcrumb {
+    background: transparent;
+    padding: 0.75rem 0;
+    margin-bottom: 1rem;
+    
+    .breadcrumb-item {
+        color: $text-muted;
+        
+        a {
+            color: $primary-accent;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        
+        &.active {
+            color: $text-dark;
+            font-weight: 500;
+        }
+        
+        + .breadcrumb-item::before {
+            content: '/';
+            color: $text-muted;
+        }
+    }
+}
+
+// -------------------- 13. PAGINATION (Modern & Clean) -----
+.pagination {
+    gap: 0.25rem;
+    
+    .page-link {
+        border-radius: 0.5rem;
+        border: 1px solid $card-border;
+        color: $text-dark;
+        padding: 0.5rem 1rem;
+        transition: $transition-base;
+        
+        &:hover {
+            background-color: $gray-bg;
+            border-color: $primary-accent;
+            color: $primary-accent;
+            transform: translateY(-1px);
+        }
+    }
+    
+    .page-item.active .page-link {
+        background: $primary-accent;
+        border-color: $primary-accent;
+        color: white;
+        box-shadow: $shadow-sm;
+    }
+}
+
+// -------------------- 14. RESPONSIVE ADJUSTMENTS (Improved Mobile) -----
+@media (max-width: 768px) {
+    body {
+        font-size: 0.875rem;
+    }
+    
+    .card, .coursebox, .section {
+        border-radius: 0.75rem;
+    }
+    
+    .btn-primary, .btn-outline-primary {
+        padding: 0.4rem 1rem;
+    }
+    
+    h1, .h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.25rem;
+    }
+    
+    .section .sectionname {
+        font-size: 1.1rem;
+    }
+    
+    .breadcrumb {
+        font-size: 0.8125rem;
+    }
+}
+
+// -------------------- 15. DARK MODE SUPPORT (Respects system preference) -----
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dark-bg: #0f172a;
+        --dark-surface: #1e293b;
+        --dark-border: #334155;
+    }
+}
+
+// -------------------- 16. ACCESSIBILITY IMPROVEMENTS -----
+// Skip to content link
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: $primary-accent;
+    color: white;
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    transition: top 0.2s;
+    
+    &:focus {
+        top: 0;
+    }
+}
+
+// Focus visible outline for keyboard navigation
+:focus-visible {
+    outline: 2px solid $primary-accent;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+// High contrast text
+.text-muted {
+    color: $text-muted;
+}
+
+// -------------------- 17. UTILITY CLASSES (Enhanced) -----
+.border-accent {
+    border-color: $primary-accent !important;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, $primary-accent, $secondary-accent);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.shadow-hover {
+    transition: $transition-base;
+    
+    &:hover {
+        box-shadow: $shadow-lg;
+        transform: translateY(-2px);
+    }
+}
+
+// Modern scrollbar (Webkit) - enhanced
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $gray-light;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: darken($card-border, 10%);
+    border-radius: 10px;
+    transition: $transition-base;
+    
+    &:hover {
+        background: $primary-accent;
+    }
+}
+
+// Smooth scrolling for the whole page
+html {
+    scroll-behavior: smooth;
+}
+
+// Animation for loading states
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+// =================================================================
+// SLBOOST STARTER PACK OVERRIDES (safe, high-priority custom layer)
+// =================================================================
+// Edit these colors first to brand your theme quickly.
+$slb-brand: #1f4b99;
+$slb-brand-dark: #163a79;
+$slb-bg: #f4f7fb;
+$slb-surface: #ffffff;
+$slb-border: #dbe3ef;
+$slb-text: #1c2a3a;
+$slb-muted: #5f6f84;
+
+body {
+    background-color: $slb-bg;
+    color: $slb-text;
+}
+
+// Header and top nav branding.
+.navbar.bg-primary {
+    background: linear-gradient(135deg, $slb-brand 0%, $slb-brand-dark 100%) !important;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    letter-spacing: 0.01em;
+}
+
+// Main content cards and blocks.
+.card,
+.block,
+#region-main {
+    border-color: $slb-border;
+}
+
+.block {
+    border-radius: 0.9rem;
+    background: $slb-surface;
+}
+
+.coursebox,
+.dashboard-card,
+.activity-item {
+    border: 1px solid $slb-border;
+    border-radius: 0.9rem;
+    background: $slb-surface;
+}
+
+// Buttons with consistent branding.
+.btn-primary,
+.btn-secondary {
+    border: none;
+}
+
+.btn-primary {
+    background: $slb-brand;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: $slb-brand-dark;
+}
+
+// Course section readability.
+.course-content .section {
+    background: $slb-surface;
+    border: 1px solid $slb-border;
+    border-radius: 0.9rem;
+    padding: 1rem 1.1rem;
+}
+
+.course-content .section .sectionname {
+    color: $slb-brand-dark;
+    border-left: 4px solid $slb-brand;
+    padding-left: 0.75rem;
+}
+
+// Login screen polish.
+body.pagelayout-login #page {
+    backdrop-filter: saturate(110%);
+}
+
+.login-wrapper .login-container {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid $slb-border;
+    border-radius: 1rem;
+    box-shadow: 0 10px 28px rgba(22, 58, 121, 0.12);
+    padding: 1.25rem;
+}
+
+// Footer cleanup while keeping core links.
+#page-footer {
+    background: $slb-surface;
+    border-top: 1px solid $slb-border;
+}
+
+#page-footer .footer-content-popover {
+    color: $slb-muted;
+}
+
+// =================================================================
+// SLBOOST NON-BOOST IDENTITY PACK
+// Purpose: make SLboost visually distinct from stock Boost.
+// =================================================================
+$slx-bg: #eef3fb;
+$slx-panel: #ffffff;
+$slx-panel-alt: #f7faff;
+$slx-ink: #16253a;
+$slx-ink-soft: #60738c;
+$slx-line: #d6e0ef;
+$slx-accent: #7b2ff7;
+$slx-accent-2: #2d8cff;
+$slx-darknav: #0f1c2f;
+
+body {
+    background:
+        radial-gradient(circle at 0% 0%, rgba(123, 47, 247, 0.1), transparent 35%),
+        radial-gradient(circle at 100% 0%, rgba(45, 140, 255, 0.12), transparent 35%),
+        $slx-bg !important;
+    color: $slx-ink !important;
+}
+
+// App shell: pull content into a soft panel container.
+#page.drawers .main-inner {
+    max-width: 1320px;
+    margin: 1rem auto 0;
+    padding: 1rem 1.1rem 0;
+}
+
+// Dramatic top navigation treatment.
+.navbar.bg-primary,
+.primary-navigation {
+    background: linear-gradient(120deg, $slx-accent, $slx-accent-2) !important;
+    border: 0 !important;
+    box-shadow: 0 12px 30px rgba(45, 140, 255, 0.28) !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand,
+.primary-navigation .navigation a {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+// Fix: primary menu hover/active was turning white (hiding white text).
+.primary-navigation .nav-link,
+.primary-navigation .moremenu .nav-link,
+.primary-navigation .navigation a {
+    background: transparent !important;
+}
+
+.primary-navigation .nav-link:hover,
+.primary-navigation .nav-link:focus,
+.primary-navigation .moremenu .nav-link:hover,
+.primary-navigation .moremenu .nav-link:focus,
+.primary-navigation .navigation a:hover,
+.primary-navigation .navigation a:focus {
+    background: rgba(255, 255, 255, 0.16) !important;
+    color: #fff !important;
+}
+
+.primary-navigation .nav-link.active,
+.primary-navigation .moremenu .nav-link.active,
+.primary-navigation .navigation .active > a {
+    background: rgba(255, 255, 255, 0.22) !important;
+    color: #fff !important;
+}
+
+// Make primary top menu tabs consistent and a bit larger.
+.primary-navigation .moremenu .nav-link,
+.primary-navigation .navigation .nav-link,
+.primary-navigation .navigation a {
+    min-height: 42px;
+    padding: 0.62rem 1.05rem !important;
+    border-radius: 0.72rem !important;
+    font-size: 0.96rem;
+    line-height: 1.1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+// Keep short tabs (Home, Dashboard, My courses) from appearing tiny.
+.primary-navigation .navigation li {
+    display: flex;
+}
+
+.primary-navigation .navigation li > .nav-link,
+.primary-navigation .navigation li > a {
+    min-width: 132px;
+}
+
+// Site administration slightly larger as requested.
+.primary-navigation .navigation li:last-child > .nav-link,
+.primary-navigation .navigation li:last-child > a {
+    min-width: 164px;
+}
+
+// Dark side drawers to break Boost look completely.
+.drawer,
+.drawer-left,
+.drawer-right {
+    background: linear-gradient(180deg, $slx-darknav 0%, #1a2b45 100%) !important;
+    color: #dce7f8 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.drawer .list-group-item,
+.drawer a,
+.drawer .nav-link {
+    color: #dce7f8 !important;
+    border-radius: 0.7rem;
+}
+
+.drawer .list-group-item.active,
+.drawer .list-group-item:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #fff !important;
+}
+
+// Region main as elevated panel.
+#region-main {
+    background: $slx-panel !important;
+    border: 1px solid $slx-line !important;
+    border-radius: 1.2rem !important;
+    padding: 1.1rem 1.2rem !important;
+    box-shadow: 0 14px 32px rgba(15, 28, 47, 0.08) !important;
+}
+
+// Cards and blocks as product tiles.
+.card,
+.block,
+.coursebox,
+.dashboard-card {
+    background: $slx-panel !important;
+    border: 1px solid $slx-line !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 8px 20px rgba(14, 34, 66, 0.06) !important;
+}
+
+.card:hover,
+.block:hover,
+.coursebox:hover,
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(14, 34, 66, 0.12) !important;
+}
+
+// Section cards become clean "content modules".
+.course-content .section {
+    background: linear-gradient(180deg, $slx-panel 0%, $slx-panel-alt 100%) !important;
+    border: 1px solid $slx-line !important;
+    border-radius: 1rem !important;
+    padding: 1rem 1rem 0.8rem !important;
+}
+
+.course-content .section .sectionname {
+    border-left: 0 !important;
+    border-bottom: 2px solid rgba(123, 47, 247, 0.2);
+    padding-left: 0 !important;
+    padding-bottom: 0.4rem;
+    color: $slx-ink !important;
+}
+
+// Dashboard layout improvements: compact calendar and clearer timeline blocks.
+.pagelayout-mydashboard .block_calendar_month {
+    width: 100% !important;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    margin-bottom: 1.4rem !important;
+    box-shadow: 0 12px 28px rgba(22, 58, 121, 0.08) !important;
+    height: 100% !important;
+}
+
+.pagelayout-mydashboard .block_calendar_month .maincalendar,
+.pagelayout-mydashboard .block_calendar_month .calendarwrapper,
+.pagelayout-mydashboard .block_calendar_month .footer {
+    padding: 0.8rem !important;
+}
+
+.pagelayout-mydashboard .block_calendar_month .calendartable.calendarmonth th,
+.pagelayout-mydashboard .block_calendar_month .calendartable.calendarmonth td {
+    padding: 0.15rem 0.25rem !important;
+    height: 24px !important;
+    line-height: 1 !important;
+}
+
+.pagelayout-mydashboard .block_timeline {
+    width: 100% !important;
+}
+
+.pagelayout-mydashboard .block_timeline .nav-search,
+.pagelayout-mydashboard .block_timeline .nav-view-selector,
+.pagelayout-mydashboard .block_timeline .nav-day-filter {
+    margin-bottom: 0.75rem !important;
+}
+
+.pagelayout-mydashboard .block_timeline .event-action {
+    padding-left: 4.5rem !important;
+}
+
+.pagelayout-mydashboard .block_timeline .event-list-item,
+.pagelayout-mydashboard .block_timeline .event-list-items .d-flex {
+    border-bottom: 1px solid rgba(15, 28, 47, 0.08) !important;
+    padding: 0.75rem 0 !important;
+}
+
+// Button system intentionally non-boost.
+.btn {
+    border-radius: 0.7rem !important;
+    font-weight: 600;
+}
+
+.pagelayout-mydashboard .block_html .content {
+    background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,246,255,0.95) 100%) !important;
+    border: 1px solid rgba(123, 47, 247, 0.14) !important;
+    border-radius: 1.35rem !important;
+    padding: 1.35rem 1.35rem 1.5rem !important;
+}
+
+.pagelayout-mydashboard .block_html .content .dashboard-hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pagelayout-mydashboard .block_html .content .dashboard-hero h2,
+.pagelayout-mydashboard .block_html .content .dashboard-hero h3 {
+    margin: 0 0 0.5rem;
+    color: $slx-accent !important;
+}
+
+.pagelayout-mydashboard .block_html .content .dashboard-hero .hero-actions {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.pagelayout-mydashboard .block_html .content .dashboard-hero .hero-actions .btn {
+    min-width: 12rem;
+}
+
+.pagelayout-mydashboard .block_html .content .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 0.9rem;
+    margin-top: 1rem;
+}
+
+.pagelayout-mydashboard .block_html .content .quick-links .link-card {
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(123, 47, 247, 0.08);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 10px 28px rgba(22,58,121,0.06);
+}
+
+.pagelayout-mydashboard .block_html .content .quick-links .link-card a {
+    color: $slx-ink !important;
+    font-weight: 600;
+}
+
+.dashboard-hero-block {
+    background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.98) 100%) !important;
+    border: 1px solid rgba(123, 47, 247, 0.16) !important;
+    border-radius: 1.8rem !important;
+    padding: 1.4rem 1.5rem !important;
+    margin-bottom: 1.8rem !important;
+    box-shadow: 0 18px 40px rgba(22, 58, 121, 0.08) !important;
+}
+
+.dashboard-hero-block .dashboard-hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.4rem;
+    align-items: center;
+}
+
+.dashboard-hero-block .hero-copy h2,
+.dashboard-hero-block .hero-copy h3 {
+    margin: 0;
+}
+
+.dashboard-hero-block .hero-copy h2 {
+    color: $slx-accent !important;
+    font-size: 2rem !important;
+}
+
+.dashboard-hero-block .hero-copy h3 {
+    color: $slx-ink !important;
+    font-weight: 400 !important;
+}
+
+.dashboard-hero-block .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(10rem, auto));
+    gap: 0.9rem;
+    margin-top: 1rem;
+}
+
+.dashboard-hero-block .hero-actions .btn {
+    min-width: 12rem;
+}
+
+.dashboard-hero-block .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    gap: 0.9rem;
+    margin-top: 1.4rem;
+}
+
+.dashboard-hero-block .link-card {
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(123, 47, 247, 0.08);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 10px 28px rgba(22,58,121,0.06);
+}
+
+.dashboard-hero-block .link-card a {
+    color: $slx-ink !important;
+    font-weight: 600;
+}
+
+.pagelayout-mydashboard .block_badges .badge,
+.pagelayout-mydashboard .block_recentlyaccesseditems .card,
+.pagelayout-mydashboard .block_recent_activity .activity-item,
+.pagelayout-mydashboard .block_online_users .content,
+.pagelayout-mydashboard .block_news_items .content {
+    background: rgba(255,255,255,0.95) !important;
+    border-radius: 1rem !important;
+    padding: 0.95rem !important;
+}
+
+// =================================================================
+// DASHBOARD TWO-COLUMN LAYOUT — FIXED
+// Timeline (left) | Calendar (right) on the SAME row
+// Confirmed selectors from F12 inspector
+// =================================================================
+
+// Target the actual block region container
+.pagelayout-mydashboard #block-region-content,
+.pagelayout-mydashboard .block-region[data-droptarget="1"] {
+    display: grid !important;
+    grid-template-columns: 1fr 480px !important;  // 420px gives calendar enough room
+    grid-template-rows: auto !important;
+    gap: 1.25rem !important;
+    align-items: start  !important;
+    width: 100% !important;
+}
+
+// Timeline → top-left
+.pagelayout-mydashboard #block-region-content .block_timeline,
+.pagelayout-mydashboard .block-region .block_timeline {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;  // prevents overflow
+}
+
+// Calendar → top-right, same row as timeline
+.pagelayout-mydashboard #block-region-content .block_calendar_month,
+.pagelayout-mydashboard .block-region .block_calendar_month {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+// Fix calendar internal table so it fills the column properly
+.pagelayout-mydashboard .block_calendar_month .card,
+.pagelayout-mydashboard .block_calendar_month .card-body {
+    width: 100% !important;
+    overflow: visible !important;
+}
+
+.pagelayout-mydashboard .block_calendar_month table {
+    width: 100% !important;
+    table-layout: fixed !important;  // forces equal columns, no squishing
+}
+
+.pagelayout-mydashboard .block_calendar_month table th,
+.pagelayout-mydashboard .block_calendar_month table td {
+    text-align: center !important;
+    padding: 4px 2px !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+}
+
+// All other blocks (myoverview etc.) → full width below both
+.pagelayout-mydashboard #block-region-content .block:not(.block_timeline):not(.block_calendar_month),
+.pagelayout-mydashboard .block-region .block:not(.block_timeline):not(.block_calendar_month) {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+}
+
+// Mobile: stack to single column
+@media (max-width: 991px) {
+    .pagelayout-mydashboard #block-region-content,
+    .pagelayout-mydashboard .block-region[data-droptarget="1"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    .pagelayout-mydashboard #block-region-content .block_timeline,
+    .pagelayout-mydashboard #block-region-content .block_calendar_month,
+    .pagelayout-mydashboard .block-region .block_timeline,
+    .pagelayout-mydashboard .block-region .block_calendar_month {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+}
+// =================================================================
+// END DASHBOARD TWO-COLUMN LAYOUT
+// =================================================================
+
+.btn-primary {
+    background: linear-gradient(120deg, $slx-accent, $slx-accent-2) !important;
+    border: 0 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    filter: brightness(1.06);
+    box-shadow: 0 8px 18px rgba(45, 140, 255, 0.35) !important;
+}
+
+.btn-secondary,
+.btn-outline-secondary {
+    border-color: $slx-line !important;
+    background: $slx-panel-alt !important;
+    color: $slx-ink !important;
+}
+
+// Dashboard card polish and section styling.
+.pagelayout-mydashboard #region-main-box {
+    padding: 1.4rem 1.5rem 1.8rem !important;
+}
+
+.pagelayout-mydashboard .block {
+    border-radius: 1.4rem !important;
+    overflow: hidden !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    background: linear-gradient(180deg, #fbfcff 0%, #f4f6ff 100%) !important;
+}
+
+.pagelayout-mydashboard .block:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 18px 40px rgba(15, 28, 47, 0.12) !important;
+}
+
+.pagelayout-mydashboard .block .header {
+    padding: 1rem 1.2rem !important;
+    background: rgba(123, 47, 247, 0.05) !important;
+    border-bottom: 1px solid rgba(15, 28, 47, 0.06) !important;
+}
+
+.pagelayout-mydashboard .block .header .title,
+.pagelayout-mydashboard .block .header h2,
+.pagelayout-mydashboard .block .header h3 {
+    color: $slx-accent !important;
+    font-size: 1.08rem !important;
+    font-weight: 700 !important;
+}
+
+.pagelayout-mydashboard .block .content {
+    padding: 1rem 1.2rem 1.25rem !important;
+}
+
+.pagelayout-mydashboard .block_calendar_month,
+.pagelayout-mydashboard .block_timeline,
+.pagelayout-mydashboard .block_myoverview,
+.pagelayout-mydashboard .block_navigation,
+.pagelayout-mydashboard .block_recentlyaccesseditems,
+.pagelayout-mydashboard .block_badges,
+.pagelayout-mydashboard .block_news_items {
+    background: linear-gradient(180deg, #ffffff 0%, #eef4ff 100%) !important;
+    border: 1px solid rgba(123, 47, 247, 0.12) !important;
+    max-height: 500px !important;
+    overflow-y: auto !important;
+}
+
+.pagelayout-mydashboard .block_calendar_month .maincalendar,
+.pagelayout-mydashboard .block_timeline .paged-content-page-container,
+.pagelayout-mydashboard .block_myoverview .content {
+    background: transparent !important;
+}
+
+.pagelayout-mydashboard .block_calendar_month .maincalendar .calendartable.calendarmonth td,
+.pagelayout-mydashboard .block_calendar_month .maincalendar .calendartable.calendarmonth th {
+    border-radius: 0.75rem !important;
+}
+
+.pagelayout-mydashboard .block_timeline .event-list-item,
+.pagelayout-mydashboard .block_timeline .event-list-items .d-flex {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 0.8rem !important;
+}
+
+// Login page redesign feel.
+body.pagelayout-login {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(123, 47, 247, 0.18), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(45, 140, 255, 0.18), transparent 30%),
+        #eaf1fc !important;
+}
+
+body.pagelayout-login .login-wrapper .login-container {
+    border-radius: 1.2rem !important;
+    border: 1px solid $slx-line !important;
+    box-shadow: 0 18px 45px rgba(21, 44, 82, 0.16) !important;
+    backdrop-filter: blur(2px);
+}
+
+// Footer: simplify and modernize.
+#page-footer {
+    background: #0f1c2f !important;
+    color: #c8d6eb !important;
+    border-top: 0 !important;
+}
+
+#page-footer a {
+    color: #8fbeff !important;
+}
+
+#page-footer .footer-content-popover {
+    background: transparent !important;
+    color: #c8d6eb !important;
+}
+
+// Template-level identity styles (navbar/drawers/footer custom layout).
+.slboost-navbar .container-fluid {
+    gap: 0.8rem;
+}
+
+.drawer.drawer-primary {
+    top: $navbar-height;
+    height: calc(100vh - #{$navbar-height});
+    width: 84px;
+    max-width: 84px;
+    left: 0;
+    visibility: visible;
+    overflow: hidden;
+    background: #ffffff !important;
+    color: $slx-ink !important;
+    border-right: 1px solid $slx-line !important;
+    box-shadow: 12px 0 32px rgba(15, 28, 47, 0.08) !important;
+    transition: width 0.2s ease, max-width 0.2s ease, box-shadow 0.2s ease;
+}
+
+.drawer.drawer-primary:hover,
+.drawer.drawer-primary:focus-within {
+    width: 248px;
+    max-width: 248px;
+    box-shadow: 18px 0 40px rgba(15, 28, 47, 0.14) !important;
+}
+
+.drawer.drawer-primary .drawerheader {
+    height: 76px;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid $slx-line;
+    background: #ffffff;
+}
+
+.drawer.drawer-primary .drawertoggle {
+    display: none !important;
+}
+
+.drawer.drawer-primary .drawercontent {
+    background: #ffffff;
+    padding-top: 0.6rem;
+}
+
+.slboost-sidebar-brand {
+    gap: 0.7rem;
+    font-weight: 800;
+    text-decoration: none;
+    width: 216px;
+    white-space: nowrap;
+}
+
+.slboost-sidebar-brand .logo {
+    max-height: 38px;
+    width: auto;
+}
+
+.slboost-sidebar-brand .sitename {
+    color: $slx-ink;
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.drawer.drawer-primary:hover .slboost-sidebar-brand .sitename,
+.drawer.drawer-primary:focus-within .slboost-sidebar-brand .sitename {
+    opacity: 1;
+}
+
+.slboost-sidebar-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 52px;
+    height: 48px;
+    flex: 0 0 52px;
+    border-radius: 0.9rem;
+    background: linear-gradient(120deg, $slx-accent, $slx-accent-2);
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 0.64rem;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.drawer-primary .list-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.9rem 0.7rem;
+}
+
+.drawer-primary .list-group-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 224px;
+    min-height: 46px;
+    color: $slx-ink-soft !important;
+    background: #ffffff !important;
+    border: 1px solid transparent;
+    border-radius: 0.85rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    padding: 0.8rem 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.drawer.drawer-primary:not(:hover):not(:focus-within) .drawerheader {
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+}
+
+.drawer.drawer-primary:not(:hover):not(:focus-within) .list-group {
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.drawer.drawer-primary:not(:hover):not(:focus-within) .list-group-item {
+    width: 52px;
+    min-width: 52px;
+    justify-content: center;
+    gap: 0;
+    padding: 0.75rem 0;
+    font-size: 0;
+    color: transparent !important;
+}
+
+.drawer-primary .list-group-item::before {
+    content: '';
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 0.7rem;
+    background:
+        linear-gradient(120deg, rgba(123, 47, 247, 0.16), rgba(45, 140, 255, 0.16));
+    border: 1px solid rgba(45, 140, 255, 0.14);
+}
+
+.drawer.drawer-primary:not(:hover):not(:focus-within) .list-group-item::before {
+    margin: 0;
+}
+
+.drawer-primary .list-group-item:nth-child(1)::before {
+    content: '\f015';
+}
+
+.drawer-primary .list-group-item:nth-child(2)::before {
+    content: '\f3fd';
+}
+
+.drawer-primary .list-group-item:nth-child(3)::before {
+    content: '\f19d';
+}
+
+.drawer-primary .list-group-item:nth-child(4)::before {
+    content: '\f013';
+}
+
+.drawer-primary .list-group-item::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Font Awesome 6 Free";
+    color: $slx-accent-2;
+    font-size: 0.82rem;
+    font-weight: 900;
+}
+
+.drawer.drawer-primary:hover .list-group-item,
+.drawer.drawer-primary:focus-within .list-group-item {
+    font-size: 0.95rem;
+}
+
+.drawer-primary .list-group-item:hover,
+.drawer-primary .list-group-item:focus {
+    color: $slx-ink !important;
+    background: #f4f8ff !important;
+    border-color: rgba(45, 140, 255, 0.14);
+}
+
+.drawer-primary .list-group-item.active {
+    background: #eaf2ff !important;
+    border-color: rgba(45, 140, 255, 0.18);
+    color: $slx-accent-2 !important;
+    box-shadow: inset 3px 0 0 $slx-accent-2;
+}
+
+.drawer-primary .list-group-item.active::before {
+    background: linear-gradient(120deg, $slx-accent, $slx-accent-2);
+    border-color: transparent;
+}
+
+.drawer.drawer-primary:not(:hover):not(:focus-within) .list-group-item.active {
+    color: transparent !important;
+}
+
+body.drawer-ease .drawer-primary,
+#page.show-drawer-primary {
+    transition: margin-left 0.2s ease;
+}
+
+@media (min-width: 992px) {
+    #page.drawers {
+        margin-left: 84px;
+    }
+
+    #page.show-drawer-primary {
+        margin-left: 84px;
+    }
+}
+
+#theme_slboost-drawers-blocks {
+    display: none !important;
+}
+
+#page.show-drawer-right {
+    margin-right: 0 !important;
+}
+
+.slboost-brand-chip {
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.slboost-brand-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.slboost-shell-header {
+    margin: 0.2rem 0 0.9rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid $slx-line;
+    border-radius: 0.95rem;
+    background: linear-gradient(120deg, rgba(123, 47, 247, 0.1), rgba(45, 140, 255, 0.08));
+}
+
+.slboost-shell-kicker {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $slx-ink-soft;
+    font-weight: 700;
+}
+
+.slboost-shell-title h1 {
+    font-size: 1.15rem;
+    color: $slx-ink;
+}
+
+.slboost-page-header-wrap {
+    margin-bottom: 0.55rem;
+}
+
+.slboost-page-header-wrap .page-header-headings,
+.slboost-page-header-wrap h1 {
+    display: none;
+}
+
+.slboost-footer-toprow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.slboost-footer-brand {
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+}
+
+.slboost-footer-meta {
+    color: #9eb2ce;
+    font-size: 0.82rem;
+}
+
+.slboost-navbar-sitename {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: $slx-ink;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.92;
+    padding: 0.42rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(45, 140, 255, 0.08);
+    border: 1px solid rgba(45, 140, 255, 0.18);
+}
+
+
